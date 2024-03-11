@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website - Aayan</title>
+    <link rel ="stylesheet" href="style.css">
+   <!----> <title>Office Location Map</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class = "logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">What I Do</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Game Developer and Designer</p>
+                <p>Video Editor</p>
+                <h1>Hi, I'm <span>Aayan</span> Sharma, <br>Welcome.</h1>
+            </div>
+        </div>
+    </div>
+    <!--About Me-->
+    <div id ="about">
+        <div class="container">
+            <div class="row">
+            <div class="about-col-1"><img src="images/me.jpeg"width="400"  height="500"></div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>Hi, My name is Aayan Sharma. I'm 19 years old, studing in UITM Rzeszow for BsC in Game Development and Design.
+                    I like playing video games, playing Guitar and Video Editing on softwares like Davinci Resolve.
+                </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links"onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Game Development</span><br>Developing games in Unity</li>
+                        <li><span>Video Editing</span><br>Editing videos in Davinci Resolve 18</li>
+                        <li><span>Creating Game Assets</span><br>Using Blender to create assets </li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>AIESEC LCVP OGX</span><br>Working in AIESEC as Local Committee VP for OGX department.</li>
+                        <li><span>Website Developer, RUDRAKSHA WELFARE FOUNDATION</span><br>Internship with Rudraksha Welfare Foundation</li>
+                    </ul>
+                </div>
+                <div class="tab-contents"id="education">
+                    <ul>
+                        <li><span> BsC Game Development and Design, UITM</span><br>OCT 2022-PRESENT</li>
+                        <li><span>Senior Secondary Education in Commerce, The British School</span><br>APR 2020-MAR 2022</li>
+                        <li><span>St. Kabir Public School</span><br>DEC 2006-FEB 2020</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+  <!--Portfolio-->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">What I Do</h1>
+        <div class="worklist">
+            <div class="work">
+                <div class="work-item">
+                    <img src="images/img1.png" alt="Image 1">
+                    <div class="layer">
+                        <h3><b>Blender Asset Creation</b></h3>
+                        <p>I use blender to create assets such as characters, clothing, weapons etc.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="images/img2.jpg" alt="Image 2">
+                    <div class="layer">
+                        <h3><b>Video Editing</b></h3>
+                        <p>I work on Davinci Resolve too make short edits for short movies, and social media reels.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="images/img3.jpg" alt="Image 3"><div class="layer">
+                        <h3><b>Game Development</b></h3>
+                        <p>I work on softwares such as Unity,RPGMaker etc to develop new games.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Contact-->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1>Find Me Here</h1>
+                <div id="map"></div>
+                <h1 class="sub-title">Contact Me</h1>
+                <p>Email - aayan37962@outlook.com</p>
+                <p>Phone Number - 517142367</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/aayan-sharma-00561b263/"><i class="fa-brands fa-linkedin"></i></a>
+                </div>  
+            </div>
+            <div class="contact-right">
+                <form onsubmit="saveFormData()">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message" ></textarea>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+    </script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+    <!--Client-side local storage-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var storedFormData = localStorage.getItem('formData');
+            if (storedFormData) {
+                var formData = JSON.parse(storedFormData);
+                fillForm(formData);
+            }
+        });
+    
+        function fillForm(formData) {
+            document.querySelector('input[name="Name"]').value = formData.name || '';
+            document.querySelector('input[name="Email"]').value = formData.email || '';
+            document.querySelector('textarea[name="Message"]').value = formData.message || '';
+        }
+    
+        function saveFormData() {
+            var formData = {
+                name: document.querySelector('input[name="Name"]').value,
+                email: document.querySelector('input[name="Email"]').value,
+                message: document.querySelector('textarea[name="Message"]').value,
+            };
+    
+            localStorage.setItem('formData', JSON.stringify(formData));
+        }
+    </script>
+    <!--Third party API --><div id="map"></div>
+    <script>
+        function initMap() {
+           
+            const officeLocation = [50.049037268778164, 21.98164795259047];
+
+            
+            const map = L.map('map').setView(officeLocation, 15);
+
+          
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+           
+            L.marker(officeLocation).addTo(map)
+                .bindPopup('My Office')
+                .openPopup();
+        }
+
+       
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+    
+    
+</body>
+</html>
